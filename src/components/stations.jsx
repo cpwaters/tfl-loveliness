@@ -4,14 +4,19 @@ import { Switch } from 'react-router-dom';
 
 const Stations = ({ amatch }) => {
 
-    const [stops, setStops] = useState({
-        stations: []
-    });
-
     const line = amatch;
+    const [direction, setDirection] = useState('all');
+    const [stops, setStops] = useState({
+      stations: [], 
+    });
+    
+    const handleDirection = (d) => {
+      setDirection(d);
+      stops.direction = d;
+    };
 
     useEffect(() => {
-      fetch(`https://api.tfl.gov.uk/Line/${line}/Route/Sequence/all`)
+      fetch(`https://api.tfl.gov.uk/Line/${line}/Route/Sequence/${direction}`)
       .then(res => {
         return res.json();
       })
@@ -20,26 +25,14 @@ const Stations = ({ amatch }) => {
       });
     }, []);
 
-    //console.log(stops)
-
-    /*
-    const switchReplace = (mode) => {
-        switch(expression) {
-            case 'DLR Station':
-                ''
-              break;
-            case y:
-              // code block
-              break;
-            default:
-              // code block
-          }
-    }
-*/
   return(
       <div>
-        <p>Stations/Stops: (direction: { stops && stops.direction })</p> 
-        
+        <div className="direction-filter">
+          <p>Stations/Stops: (direction: {direction} )</p> 
+          <button onClick={() => handleDirection('inbound')} >Inbound</button>
+          <button onClick={() => handleDirection('outbound')} >Outbound</button> 
+          <button onClick={() => handleDirection('all')} >All</button>
+        </div>
             { stops.stations.map(item => 
             <div className="stations">
             <p key={item.icsid} >{item.name.replace('DLR Station', '')}</p>

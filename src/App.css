@@ -110,17 +110,38 @@ button {
   min-height:50px;
   flex-direction: column;
 }
-.details{width:100%;}
-.details_header {
+
+.direction-filter {
+  margin-bottom:20px;
+}
+
+.direction-filter button {
+  background: rgba(0,25,168,1);
+  color:#fff;
+  border:none;
+  border-radius:5px;
+  font-size:18px;
+  padding:10px;
+  margin-right: 10px;
+  max-width:150px;
+  width:100%;
+}
+.direction-filter button:hover {
+  background: rgba(0,25,168,0.5);
+  cursor:pointer;
+}
+
+.details, .mode {width:100%;}
+.details_header, .mode-header {
   display:flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.details_header-left, .details_header-right {
+.details_header-left, .details_header-right-one, .details_header-right-two, .mode-header p, .mode-header img {
   width:50%;
 }
-.details_header-right {
+.details_header-right-one {
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -128,7 +149,7 @@ button {
   border-radius: 10px;
   width: 40%;
 }
-.details_header-right h1 {
+.details_header-right-one h1 {
   background:#000;
   color:#fff;
   border-radius:5px;
@@ -139,6 +160,17 @@ button {
   align-items: center;
   font-size:70px;
   padding: 0 10px;
+}
+
+.details_header-right-two {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 40%;
+}
+.details_header-right-two-logo {
+  max-width: 200px;
+  width: 100%;
 }
 
 small {

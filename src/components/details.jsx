@@ -15,8 +15,6 @@ const Details = ({ match }) => {
       });
     }, []);
 
-    console.log(detail[0])
-
   return(
       <div className="details">
         <div className="details_header">
@@ -26,16 +24,16 @@ const Details = ({ match }) => {
             <p>Mode of transit: {detail && detail[0].modeName}</p>   
           </div> 
           {match.path.includes('/bus/') ? 
-          <div className="details_header-right">
+          <div className="details_header-right-one">
             <h1>{detail[0].name}</h1>
           </div> :
-          <div>
-            <img src={`/assets/${detail[0].id}.png`} alt={`${detail[0].name} corporate logo`} />
+          <div className="details_header-right-two">
+            <img className="details_header-right-two-logo" src={window.location.origin + `/src/assets/${detail[0].id}.png`} alt={`${detail[0].name} corporate logo`} />
           </div>
           }
 
         </div>
-        <Stations amatch={match.params.id} />    
+        <Stations detail={detail} amatch={match.params.id} />    
       </div>
     )
   
