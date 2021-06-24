@@ -1,0 +1,147 @@
+.App {display:flex;}
+
+.App-inner {
+  text-align: left;
+  padding: 20px;
+  max-width:1200px;
+  width: 100%;
+  margin-inline:auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.App-inner a {
+  max-width:200px;
+  width:100%;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.App-inner p {
+  width:100%;
+}
+
+.App-header {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  color: #333;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+button {
+  font-size: calc(10px + 2vmin);
+}
+
+.modes, .tubes, .buses, .trains, .cars, .modeButton {
+  text-transform: capitalize;
+  padding: 10px;
+  border-radius:5px;
+  min-height:50px;
+  border:1px solid #eee;
+  margin:5px;
+  display:inline-flex;
+  width:100%;
+  box-shadow:#ccc 0px 0px 8px 1px;
+  text-decoration:none;
+  color:#fff;
+  background:rgba(0,25,168,1);
+}
+.modes:hover, .tubes:hover, .buses:hover {
+  box-shadow:#ccc 0px 0px 0px 0px;
+  background:#fff;
+  color:rgba(0,25,168,1);
+}
+
+.listState {
+  display:none;
+}
+
+.navbar {
+  display: flex;
+  min-width:270px;
+  padding: 20px;
+  background: rgba(0,25,168,1);
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.navbar a {
+  text-decoration:none;
+}
+.navbar a h1 {
+  margin:0;
+  margin-block-start:0em;
+  margin-block-end:0em;
+  color:#fff;
+}
+.links {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.links a{
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 0px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.stations {
+  display:inline-flex;
+  width:20%;
+  border: 1px solid #eee;
+  padding: 10px;
+  border-radius:5px;
+  margin:5px;
+  min-height:50px;
+  flex-direction: column;
+}
+.details{width:100%;}
+.details_header {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.details_header-left, .details_header-right {
+  width:50%;
+}
+.details_header-right {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  background: rgba(220,36,31,1);
+  border-radius: 10px;
+  width: 40%;
+}
+.details_header-right h1 {
+  background:#000;
+  color:#fff;
+  border-radius:5px;
+  min-width:90px;
+  height:120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size:70px;
+  padding: 0 10px;
+}
+
+small {
+  color:#aaa;
+  display:block;
+}
