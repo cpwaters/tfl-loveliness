@@ -16,6 +16,8 @@ const AllApiCalls = () => {
     const lineRoute = `https://api.tfl.gov.uk/line/${lineId}/${route}`;
     const lineRouteModeSelect = `https://api.tfl.gov.uk/Line/Mode/${modes}/${route}`;
 
+    const stopsOnLine = `https://api.tfl.gov.uk/Line/${line}/StopPoints`;
+
 
     return(
         <p>{mode}</p>

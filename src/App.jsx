@@ -35,7 +35,7 @@ const App = () => {
           <Switch>
             <Route exact path="/"><Modes /></Route>
             { modes && modes.map((mode) => (<Route key={mode.modeName} exact path={`/${mode.modeName}`}><Mode name={mode.modeName} /></Route>) )}
-            { modes && modes.map((mode) => (<Route exact path={`/${mode.modeName}/:id`} component={Details} />) )}
+            { modes && modes.map((mode) => (<Route key={mode.modeName+'id'} exact path={`/${mode.modeName}/:id`} component={Details} />) )}
           </Switch>
         </div>
       </div>  

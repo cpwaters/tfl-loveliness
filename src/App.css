@@ -100,7 +100,7 @@ button {
   font-weight: 700;
 }
 
-.stations {
+.stations, .stops {
   display:inline-flex;
   width:20%;
   border: 1px solid #eee;

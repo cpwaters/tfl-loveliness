@@ -1,5 +1,6 @@
 import React,{ useEffect, useState } from 'react'
 import Stations from './stations'
+import Stops from './stops'
 
 const Details = ({ match }) => {
 
@@ -33,7 +34,9 @@ const Details = ({ match }) => {
           }
 
         </div>
-        <Stations detail={detail} amatch={match.params.id} />    
+        <Stops detail={detail} amatch={match.params.id} /> 
+        <Stations detail={detail} amatch={match.params.id} />  
+            
       </div>
     )
   
