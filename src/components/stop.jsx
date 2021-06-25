@@ -19,7 +19,7 @@ const Stop = ({ match }) => {
         });
       }, []);
     
-      console.log(stop)
+      //console.log(stop)
 
 
   return(
@@ -27,7 +27,8 @@ const Stop = ({ match }) => {
             <h2>{ stop.commonName } - {stop.stopType && stop.stopType.replace(/([a-z])([A-Z])/g, '$1 $2') }</h2> 
             <MapEmbed lat={stop.lat} lon={stop.lon} />
 
-            <h3>Other services from this stop : </h3>{stop && stop.lineModeGroups.map(lmg => (
+            <h3>Other services from this stop : </h3>
+            {stop && stop.lineModeGroups.map(lmg => (
                 <LineModeGroups lat={stop.lat} lon={stop.lon} key={Math.random()} lmg={lmg} />
                 ))   
             }

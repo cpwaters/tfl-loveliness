@@ -15,17 +15,28 @@ const Mode = ({ name }) => {
             setModeState(data);
         }
 
+        const renderName = () => {
+            if(name.includes('-')){
+                return ( <h2 style={{textTransform: 'capitalize'}} >{ name.replace('-', ' ') } routes on the network</h2> )
+            }
+            if(name.includes('dlr')){
+                return ( <h2 style={{textTransform: 'capitalize'}} >{ name.replace('dlr', 'Docklands Light Railway (DLR)') } routes on the network</h2> )
+            }
+            if(name.includes('tflrail')){
+                return (<h2 style={{textTransform: 'capitalize'}} >{ name.replace('tflrail', 'TfL Rail') } routes on the network</h2> )
+            }else {
+                return(<h2 style={{textTransform: 'capitalize'}} >{ name } routes on the network</h2>)
+            }
+        }
+
     return(
         <div className="mode">
-            <div className="mode-header">
-                <h2>{ name } routes on the network</h2>
+            <div className="mode_header">
+            {renderName()} 
                 <img className="details_header-right-two-logo" src={window.location.origin + `/src/assets/${name}.png`} alt={`${name} corporate logo`} />
             </div>
             { states && states.map((state) => (
-                <Link key={state.id} to={`/${state.modeName}/${state.id}`} >
-                    <p className="modeButton">{state.name}</p>
-                    {/* <img style={{width:'150px'}} src={window.location.origin + `/src/assets/${state.name}.png`} alt={`${state.name} corporate logo`} /> */}
-                </Link>
+                <Link className="btn" key={state.id} to={`/${state.modeName}/${state.id}`} >{state.name}</Link>
             ))}
         </div>
         );

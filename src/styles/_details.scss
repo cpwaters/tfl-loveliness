@@ -1,0 +1,46 @@
+
+.details{
+    width:100%;
+
+    &_header{
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        &-left{
+            width:50%;
+        } 
+        
+        &-right {
+            &-one, &-two {
+                display: flex;
+                justify-content: center;
+                flex-direction: row;
+                width: 40%;
+            }
+            &-one {
+                background: rgba(220,36,31,1);
+                border-radius: 10px;
+                
+                h1 {
+                    background:#000;
+                    color:#fff;
+                    border-radius:5px;
+                    min-width:90px;
+                    height:120px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size:70px;
+                    padding: 0 10px;
+                }
+            }
+            &-two {
+                &-logo {
+                    max-width: 200px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

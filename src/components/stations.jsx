@@ -29,7 +29,7 @@ const Stations = ({ amatch }) => {
 
   return(
       <div>
-        <div className="direction-filter">
+        <div className="direction_filter">
           <p>Stations Served: {stops.stations.length} (direction: {direction} )</p> 
           <button onClick={() => handleDirection('inbound')} >Inbound</button>
           <button onClick={() => handleDirection('outbound')} >Outbound</button> 

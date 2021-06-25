@@ -30,7 +30,7 @@ const Stops = ({ amatch, mode }) => {
 
   return(
       <div> 
-        <div className="direction-filter">
+        <div className="direction_filter">
           <p>Stops on route: {stops.length} (direction: {direction} )</p> 
           <button onClick={() => handleDirection('inbound')} >Inbound</button>
           <button onClick={() => handleDirection('outbound')} >Outbound</button> 
@@ -39,11 +39,11 @@ const Stops = ({ amatch, mode }) => {
             { stops.map(item => {
             return (
             //console.log(item),
-                <Link key={Math.random()} to={`/${m}/${line}/${item.id}`}className="stops-card">
+                <Link key={Math.random()} to={`/${m}/${line}/${item.id}`} className="stops-card">
                     <p>{item.commonName}</p>
-                    <p>{item.icsCode}</p>
+                    {/* <p>{item.icsCode}</p>
                     <small>{item.lat} / {item.lon}</small>
-                    <small>Stop ID: {item.id}</small>
+                    <small>Stop ID: {item.id}</small> */}
                 </Link>
             )}
             )}

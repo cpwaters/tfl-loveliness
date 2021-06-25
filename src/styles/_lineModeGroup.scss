@@ -1,9 +1,22 @@
 .lineModeGroups {
     display: flex;
     flex-direction:column;
+    margin:3% 0;
 
-    img{
-        flex-direction:row;
-        width:100px;
+    &_header {
+        display: flex;
+        align-items: center;
+        margin-bottom:2%;
+
+        img {
+            max-width:100px;
+            width:100%;
+            margin-right:3%;
+        }
+    }
+
+    &_body {
+        display: flex;
+        flex-wrap:wrap;
     }
 }

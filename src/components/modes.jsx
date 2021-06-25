@@ -18,15 +18,24 @@ const Modes = () => {
   },[])
 
 return(
-    <>
-    <p>Modes of transport around the network</p>
-    { modes && modes.map((mode) => (  
-      <Link key={mode.modeName} to={`/${mode.modeName}`} >
-          <p className="modes">{mode.modeName.includes('-') ? mode.modeName.replace('-', ' ') : mode.modeName}</p>
-      </Link>
-    )
+    <div className="modes">
+    <h2>Modes of transport around the network</h2>
+    { modes && modes.map((mode) =>  
+      {
+        if(mode.modeName.includes('-')){
+            return (<Link className="btn" key={mode.modeName} to={`/${mode.modeName}`}>{mode.modeName.replace('-', ' ')}</Link>)
+        }
+        if(mode.modeName.includes('dlr')){
+            return (<Link className="btn" key={mode.modeName} to={`/${mode.modeName}`}>{mode.modeName.replace('dlr', 'Docklands Light Railway (DLR)')}</Link>)
+        }
+        if(mode.modeName.includes('tflrail')){
+            return (<Link className="btn" key={mode.modeName} to={`/${mode.modeName}`}>{mode.modeName.replace('tflrail', 'TfL Rail')}</Link>)
+        }else {
+            return(<Link className="btn" key={mode.modeName} to={`/${mode.modeName}`}>{mode.modeName}</Link>)
+        }
+    }    
     )}
-    </>
+    </div>
 );
 }
 

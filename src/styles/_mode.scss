@@ -1,0 +1,19 @@
+.mode {
+    width:100%;
+
+    &_header {
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border:1px solid #aaa;
+        border-radius:5px;
+        padding: 10px;
+        margin-bottom:3%;
+        background-image: url(../assets/tfl1.png);
+        
+
+        p, img {
+            width:50%;
+        }
+    }
+}

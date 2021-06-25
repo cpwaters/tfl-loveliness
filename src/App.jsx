@@ -30,9 +30,6 @@ const App = () => {
       <div className="App">
         <Navbar modes={modes}/>
         <div className="App-inner">
-          <header className="App-header"> 
-            <img src="" alt="" />
-          </header>
           <Switch>
             <Route exact path="/"><Modes /></Route>
             { modes && modes.map((mode) => (<Route key={mode.modeName} exact path={`/${mode.modeName}`}><Mode name={mode.modeName} /></Route>) )}
