@@ -4,9 +4,9 @@ const MapEmbed = ({ lon, lat }) => {
 
 
     return (
-        <>
-        <iframe src={`https://maps.google.com/maps?q=${lat},${lon}&hl=es;z=14&amp;output=embed`}></iframe>
-        </>
+        <div className="map">
+            <iframe src={`https://maps.google.com/maps?q=${lat},${lon}&output=embed`}></iframe>
+        </div>
     )
 
 

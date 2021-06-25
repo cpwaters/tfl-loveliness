@@ -24,6 +24,7 @@ const Mode = ({ name }) => {
             { states && states.map((state) => (
                 <Link key={state.id} to={`/${state.modeName}/${state.id}`} >
                     <p className="modeButton">{state.name}</p>
+                    {/* <img style={{width:'150px'}} src={window.location.origin + `/src/assets/${state.name}.png`} alt={`${state.name} corporate logo`} /> */}
                 </Link>
             ))}
         </div>

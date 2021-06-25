@@ -1,4 +1,13 @@
-.App {display:flex;}
+@import '_navbar.scss';
+@import '_map.scss';
+@import '_stations.scss';
+@import '_stops.scss';
+@import '_lineModeGroup.scss';
+
+.App {
+    display:flex;
+    max-width:100%;
+}
 
 .App-inner {
   text-align: left;
@@ -42,7 +51,7 @@ button {
   font-size: calc(10px + 2vmin);
 }
 
-.modes, .tubes, .buses, .trains, .cars, .modeButton {
+.modes, .tubes, .buses, .trains, .cars, .modeButton, .services {
   text-transform: capitalize;
   padding: 10px;
   border-radius:5px;
@@ -66,25 +75,7 @@ button {
   display:none;
 }
 
-.navbar {
-  display: flex;
-  min-width:270px;
-  padding: 20px;
-  background: rgba(0,25,168,1);
-  align-items: flex-start;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-.navbar a {
-  text-decoration:none;
-}
-.navbar a h1 {
-  margin:0;
-  margin-block-start:0em;
-  margin-block-end:0em;
-  color:#fff;
-}
+
 .links {
   display: flex;
   flex-direction: column;
@@ -100,16 +91,7 @@ button {
   font-weight: 700;
 }
 
-.stations, .stops {
-  display:inline-flex;
-  width:20%;
-  border: 1px solid #eee;
-  padding: 10px;
-  border-radius:5px;
-  margin:5px;
-  min-height:50px;
-  flex-direction: column;
-}
+
 
 .direction-filter {
   margin-bottom:20px;
@@ -176,4 +158,12 @@ button {
 small {
   color:#aaa;
   display:block;
+}
+
+.stn-info-ftr {
+  display:flex;
+  color: #aaa;
+  border:1px solid #aaa;
+  padding:10px;
+  margin-top:50px;
 }

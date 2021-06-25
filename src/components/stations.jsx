@@ -36,7 +36,7 @@ const Stations = ({ amatch }) => {
           <button onClick={() => handleDirection('all')} >All</button>
         </div>
             { stops.stations.map(item => 
-              <div key={item.icsid} className="stations">
+              <div key={Math.random()} className="stations-card">
                   <p>{item.name.replace('Underground Station', '')}</p>
               </div>
             )}
