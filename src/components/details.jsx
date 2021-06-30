@@ -35,7 +35,7 @@ const Details = ({ match }) => {
 
         </div>
         <Stops mode={detail[0].modeName} detail={detail} amatch={match.params.id} /> 
-        <Stations detail={detail} amatch={match.params.id} />  
+        {/* <Stations detail={detail} amatch={match.params.id} />   */}
             
       </div>
     )

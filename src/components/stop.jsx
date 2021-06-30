@@ -3,9 +3,16 @@ import { Link } from 'react-router-dom';
 import LineModeGroups from './stopComponents/lineModeGroups';
 //import Stops from 'apiFunctions';
 import MapEmbed from './map'
+import Arrivals from './arrivals2'
+import Timetable from './timetable'
+import ArrivalTime from './arrivalTime'
+import Places from './places'
 
 const Stop = ({ match }) => {
 
+  //console.log(match)
+    const platformMode = match.path
+    const stopName = match.params.id
     const stopCode = match.params.stop;
     const [stop, setStop] = useState(0)
     
@@ -27,11 +34,21 @@ const Stop = ({ match }) => {
             <h2>{ stop.commonName } - {stop.stopType && stop.stopType.replace(/([a-z])([A-Z])/g, '$1 $2') }</h2> 
             <MapEmbed lat={stop.lat} lon={stop.lon} />
 
+            {/* <Arrivals platformMode={platformMode} stopName={stopName} stopCode={stopCode}/> */}
+           
+
+            {/* <Places stopCode={stopCode} /> */}
+
+            {/* <Places stopCode={stopCode}/> */}
+            <Timetable />
+
             <h3>Other services from this stop : </h3>
             {stop && stop.lineModeGroups.map(lmg => (
                 <LineModeGroups lat={stop.lat} lon={stop.lon} key={Math.random()} lmg={lmg} />
                 ))   
             }
+
+            <ArrivalTime stopCode={stopCode}/>
 
             <div className="stn-info-ftr">
                 <p>Id: { stop.id }</p> 

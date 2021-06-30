@@ -4,6 +4,7 @@ import Modes from './components/modes'
 import Details from './components/details'
 import Mode from './components/mode'
 import Stop from './components/stop'
+import Reference from './components/reference/reference'
 import './styles/global.scss'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
@@ -35,6 +36,7 @@ const App = () => {
             { modes && modes.map((mode) => (<Route key={mode.modeName} exact path={`/${mode.modeName}`}><Mode name={mode.modeName} /></Route>) )}
             { modes && modes.map((mode) => (<Route key={mode.modeName+'id'} exact path={`/${mode.modeName}/:id`} component={Details} />) )}
             { modes && modes.map((mode) => (<Route key={Math.random()} exact path={`/${mode.modeName}/:id/:stop`} component={Stop} />) )}
+            <Route exact path="/reference" component={Reference}></Route>
           </Switch>
         </div>
       </div>  

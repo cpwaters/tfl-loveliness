@@ -22,6 +22,7 @@ const Navbar = ({ modes }) => {
                     }
                 }
                 )}
+                <Link to="/reference">Reference</Link>
             </div>
         </nav>
      );
