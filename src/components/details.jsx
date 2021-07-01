@@ -1,10 +1,13 @@
 import React,{ useEffect, useState } from 'react'
 import Stations from './stations'
 import Stops from './stops'
+import Route from './route/route'
 
 const Details = ({ match }) => {
 
     const [detail, setDetails] = useState([{}]);
+
+  const routeNumber = match.params.id;
 
     useEffect(() => {
       fetch(`https://api.tfl.gov.uk/line/${match.params.id}`)
@@ -34,6 +37,7 @@ const Details = ({ match }) => {
           }
 
         </div>
+        <Route routeNumber={routeNumber} />
         <Stops mode={detail[0].modeName} detail={detail} amatch={match.params.id} /> 
         {/* <Stations detail={detail} amatch={match.params.id} />   */}
             

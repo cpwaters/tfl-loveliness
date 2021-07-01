@@ -1,12 +1,12 @@
 import React,{ useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import LineModeGroups from './stopComponents/lineModeGroups';
+import LineModeGroups from './stops/lineModeGroups';
 //import Stops from 'apiFunctions';
 import MapEmbed from './map'
 import Arrivals from './arrivals2'
 import Timetable from './timetable'
 import ArrivalTime from './arrivalTime'
-import Places from './places'
+import Places from './places/places'
 
 const Stop = ({ match }) => {
 
