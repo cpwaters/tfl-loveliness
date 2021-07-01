@@ -32,7 +32,15 @@ const AllApiCalls = () => {
     const boolean = true;
     const page = 1;
     const bikePointId = 'BikePoints_303';
-
+    const zoom = '0'; //zoom for TRAVEL TIME overlay maps
+    const mapCenterLat = 00000000;
+    const mapCenterLon = -00000000;
+    const pinLat = 00000000;
+    const pinLon = -00000000;
+    const vehicleIds = 'LX58CFV'; // can be multiple comma separated
+    const roadIds = 'A406'; 
+    const disruptionIds = '?' // 404 on api call
+ 
     // MODES
     //Returns the service type active for a mode. Currently only supports tube
     const activeServiceType = `/Mode/ActiveServiceTypes` // returns 'regular service'
@@ -128,6 +136,30 @@ const AllApiCalls = () => {
     const bikePointSearch = `/BikePoint/Search` // don't know how this search works??
 
 
+    // ROAD
+    //Gets all roads managed by TfL
+    const roadsManaged = `/road`
+    //Gets the road with the specified id (e.g. A1)
+    const roadsById = `/Road/{roadIds}` // search above for all road ids.
+    //Gets the specified roads with the status aggregated over the date range specified, or now until the end of today if no dates are passed.
+    const roadStatusByDateRange = `/Road/{roadIds}/Status`
+        `?daterangenullable.startdate=` //String, ?
+        `?daterangenullable.enddate=` //String, ?
+    //Get active disruptions, filtered by road ids
+    const roadDisruptionsById = `/Road/{roadIds}/Disruption`
+        `?stripcontent=` //Optional, defaults to false. When true, removes every property/node except for id, point, severity, severityDescription, startDate, endDate, corridor details, location, comments and streets
+        `?severities=` //an optional list of Severity names to filter on (a valid list of severities can be obtained from the /Road/Meta/severities endpoint)
+        `?categories=` //an optional list of category names to filter on (a valid list of categories can be obtained from the /Road/Meta/categories endpoint)
+        `?closures=` //Optional, defaults to true. When true, always includes disruptions that have road closures, regardless of the severity filter. When false, the severity filter works as normal.
+    //Gets a list of disrupted streets. If no date filters are provided, current disruptions are returned.
+    const streetDisruptions = `/Road/all/Street/Disruption` // 404
+        `?startdate=` //String, REQ, Optional, the start time to filter on.
+        `?enddate=` //String, REQ, Optional, the end time to filter on.
+    //Gets a list of active disruptions filtered by disruption Ids.
+    const roadDisruptionsByDisruptionId = `/Road/all/Disruption/{disruptionIds}` // ?
+
+
+
     // CABWISE
     //Gets taxis and minicabs contact information
     const taxiInfo = `/Cabwise/search`
@@ -182,11 +214,38 @@ const AllApiCalls = () => {
         `?userealtimelivearrivals=` //A boolean to indicate if we want to receive real time live arrivals data where available.
     ]
 
+    // SEARCH
 
+    //Search the site for occurrences of the query string. 
+    //The maximum number of results returned is equal to the maximum page size of 100. To return subsequent pages, use the paginated overload.
+    const search = `/search` `?{query}` //REQ, Not sure how this works yet
+    //Searches the bus schedules folder on S3 for a given bus number. oooh AWS!!
+    const searchBusSheduleNumber = `/Search/BusSchedules` `?{query}` //REQ, Not sure how this works yet
+    //Gets the available searchProvider names.
+    const searchProviderNames = `/Search/Meta/SearchProviders`
+    //Gets the available search categories.
+    const searchCategories = `/Search/Meta/Categories` //returns 'pages', 'news', 'docs'.
+    //Gets the available sorting options.
+    const searchSortOptions = `/Search/Meta/Sorts` 
 
+    // TRAVEL TIME
+    //Gets the TravelTime overlay.
+    const travelTimeOverlay = `/TravelTimes/overlay/{zoom}/mapcenter/{mapCenterLat}/{mapCenterLon}/pinlocation/{pinLat}/{pinLon}/dimensions/{width}/{height}`
+        // Thnk all these should be added to the string as params rather than options
+        `?senariotitle=` //The title of the scenario. REQ
+        `?timeofdayid=` //The id for the time of day (AM/INTER/PM), REQ
+        `?modeid=` //The id of the mode. REQ
+        `?direction=` //The direction of travel. 'Average', 'From', 'To'.
+        `?traveltimeinterval=` //The total minutes between the travel time bands, REQ
 
+    const travelTimeCompareOverlay = `/TravelTimes/compareOverlay/{z}/mapcenter/{mapCenterLat}/{mapCenterLon}/pinlocation/{pinLat}/{pinLon}/dimensions/{width}/{height}`
+        //same params as above but with 2 extra
+        `?comparetype=` //String, REQ, ?
+        `?comparevalue=` //String, REQ, ?
 
-
+    // VEHICLE
+    //Gets the predictions for a given list of vehicle Id's.
+    const vehicleArrivalById = `/Vehicle/{vehicleIds}/Arrivals` //Reg plates etc, Max 25, REQ
 
 
 
