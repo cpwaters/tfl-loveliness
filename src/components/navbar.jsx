@@ -1,4 +1,4 @@
-import React,{ useEffect, useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Navbar = ({ modes }) => {
@@ -22,6 +22,7 @@ const Navbar = ({ modes }) => {
                     }
                 }
                 )}
+                <Link to="/elizabeth">The Elizabeth Line &amp; Crossrail</Link>
                 <Link to="/reference">Reference</Link>
             </div>
         </nav>

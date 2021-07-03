@@ -1,5 +1,10 @@
 .route {
-
+    .direction {
+        font-size:22px;
+        span {
+            text-transform:capitalize;
+        }
+    }
 
     .active {
         background: rgba(0, 25, 168, 0.5);

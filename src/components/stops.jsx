@@ -18,25 +18,17 @@ const Stops = ({ amatch, mode }) => {
       });
     }, []);
 
-    
-    
-
   return(
       <div> 
-       
             { stops.map(item => {
             return (
-            
                 <Link key={Math.random()} to={`/${m}/${line}/${item.id}`} className="stops-card">
                     <p>{item.commonName}</p>
                 </Link>
+              )}
             )}
-            )}
-               
-           
       </div>
     )
-  
 }
 
 export default Stops
