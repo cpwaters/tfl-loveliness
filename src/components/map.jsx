@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 
 const MapEmbed = ({ lon, lat }) => {
 

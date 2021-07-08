@@ -1,26 +1,23 @@
 import React,{ useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useFetch from '../../hooks/useFetch'
 
 const Stops = ({ amatch, mode }) => {
 
     const line = amatch;
     const m = mode;
-    const [stops, setStops] = useState([{}]);
+    
+    const { data, loading } = useFetch(`https://api.tfl.gov.uk/Line/${line}/StopPoints`);
   
 
     useEffect(() => {
-      fetch(`https://api.tfl.gov.uk/Line/${line}/StopPoints`)
-      .then(res => {
-        return res.json();
-      })
-      .then(data => {
-        setStops(data);
-      });
+
     }, []);
 
   return(
+    loading ? <div className="loader"></div> :
       <div> 
-            { stops.map(item => {
+            { data && data.map(item => {
             return (
                 <Link key={Math.random()} to={`/${m}/${line}/${item.id}`} className="stops-card">
                     <p>{item.commonName}</p>

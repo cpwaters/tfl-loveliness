@@ -1,29 +1,24 @@
 import React,{ useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import Filter from './filter'
+import useFetch from '../../hooks/useFetch'
+import Filter from '../../filters/order'
 
 const Mode = ({ name }) => {
 
-    const [states, setModeState] = useState(null)
-    const [filter, setFilter] = useState(0)
+    const { data, loading } = useFetch(`https://api.tfl.gov.uk/line/mode/${name}`);
 
     useEffect(() => {
-        fetchMode();
+        
     },[]);
 
-    const fetchMode = async () => {
-        const fetchMode = await fetch(`https://api.tfl.gov.uk/line/mode/${name}`);
-        const data = await fetchMode.json();
-        setModeState(data);
-       
-        let modeObjId = [];
-        states && states.map((modeObj) => {
-            modeObjId.push(modeObj.id);
-        })
-        setFilter(modeObjId)
-        
-    }
+    const btn = data && data.map(ind => (
+        <Link className="btn" key={Math.random()} to={`/${name}/${ind.id}`} >{ind.id}</Link>
+    ))
+   
 
+   
+
+    
 
     const renderName = () => {
         if(name.includes('-')){
@@ -38,10 +33,8 @@ const Mode = ({ name }) => {
             return(<h2 style={{textTransform: 'capitalize'}} >{ name } routes on the network</h2>)
         }
     }
-
-    console.log(filter)
-
     return(
+        loading ?<div className="loader"></div> : 
         <div className="mode">
             <div className="mode_header">
             {renderName()} 
@@ -49,11 +42,8 @@ const Mode = ({ name }) => {
             </div>
             <p>mode</p>
         
-            <Filter name={name} modeObjId={filter} returnedOrder={returnedOrder}/> 
-
-            {filter && filter.map(ind => (
-                <Link className="btn" key={Math.random()} to={`/${name}/${ind}`} >{ind}</Link>
-            ))}
+            {/* {loading ? <div className="loader"></div> : <Filter name={name} modeObjId={filter} />}  */}
+            { btn }
                 
         </div>
         );

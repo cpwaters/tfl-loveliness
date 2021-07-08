@@ -1,23 +1,27 @@
-import React, {useState, useEffect} from 'react'
+import React, { useEffect} from 'react'
+import useFetch from '../hooks/useFetch'
 
-const Timetable = ({ stopCode }) => {
+const Timetable = ({ stopName, stopCode }) => {
 
-    const [timetable, setTimetable] = useState(0)
+    const { data, loading } = useFetch(`https://api.tfl.gov.uk/line/${stopName}/timetable/${stopCode}`);
 
-useEffect(() => {
-    fetchTimetable();
-},[]);
+   data && data.map(ind => (
+        console.log(ind.timetable)
+    ))
 
-const fetchTimetable = async () => {
-    const fetchTimetable = await fetch(`https://api.tfl.gov.uk/line/{id}/timetable/{fromStopPointId}`);
-    const data = await fetchTimetable.json();
-    setTimetable(data);
-}
+    
 
+    useEffect(() => {
+       
+    },[]);
+
+    //data && data.map(ind => console.log(ind))
+    
     return ( 
-        <div>
-            <span>Time Table</span>
-        </div>
+        loading ? <div className="loader"></div> :
+    <span>Time Table: Coming Soon {/* tt */}</span>
+    
+        
      );
 }
  

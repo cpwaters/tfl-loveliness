@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react'
+import useFetch from '../../hooks/useFetch'
 
 const PlaceTypes = () => {
+
+    const { data, loading } = useFetch(``);
 
     const [placeType, setPlaceTypes] = useState(0)
 

@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react'
+import useFetch from '../../hooks/useFetch'
 
 const ArrivalTime = ({ stopCode }) => {
+
+  const { data, loading } = useFetch(``);
 
 const [arrivalTime, setArrivalTime] = useState(0)
 

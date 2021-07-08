@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-const Filter = ({ name, modeObjId, returnedOrder }) => {
+const Filter = ({ name, modeObjId }) => {
+
+    useEffect(() => {
+        getArray();
+    })
+
 
     const getArray = () => {
         let arr = []; 
@@ -21,17 +26,19 @@ const Filter = ({ name, modeObjId, returnedOrder }) => {
         } else {
             n === 'bus' ? order = newArr.sort(function(a,b) {return b - a}) : order = newArr.reverse() ;
         }
-       return (order)
+       return order
     }
 
-    returnedOrder = handleOrder()
-    console.log(returnedOrder)
+    let order = handleOrder()
 
+
+    console.log(newArr)
+    
     return (
         <div className="filter"> 
             <div>filter</div> 
-            <button onClick={() => handleOrder('asc', name)}>Ascending Order</button>
-            <button onClick={() => handleOrder('dsc', name)}>Decending Order</button>
+            <button onClick={() => { handleOrder('asc', name, order) }} >Ascending Order</button>
+            <button onClick={() => { handleOrder('dsc', name, order) }}>Decending Order</button>
         </div>
     );
 }

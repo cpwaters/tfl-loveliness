@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import Boroughs from './boroughs'
+import useFetch from '../../hooks/useFetch'
 
 const PlaceByType = ({ types }) => {
+
+    const { data, loading } = useFetch(``);
 
     const [placeByType, setPlaceByType] = useState(0)
 

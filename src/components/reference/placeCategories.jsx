@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react'
+import useFetch from '../../hooks/useFetch'
 
 const PlaceCats = () => {
+
+    const { data, loading } = useFetch(``);
 
     const [placeCat, setPlaceCat] = useState(0)
 

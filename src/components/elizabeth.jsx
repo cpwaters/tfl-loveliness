@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import useFetch from '../hooks/useFetch'
 
 const Elizabeth = ({ name }) => {
 
@@ -6,17 +7,10 @@ const Elizabeth = ({ name }) => {
     This is a static component as the Elizabeth line is unfinished and not added to the 'tube' mode
     */
 
-    const [states, setModeState] = useState(null)
+   const { data, loading } = useFetch(`https://api.tfl.gov.uk/line/mode/${name}`);
 
     useEffect(() => {
-        fetchMode();
     },[]);
-
-    const fetchMode = async () => {
-        const fetchMode = await fetch(`https://api.tfl.gov.uk/line/mode/${name}`);
-        const data = await fetchMode.json();
-        setModeState(data);
-    }
 
 return(
 

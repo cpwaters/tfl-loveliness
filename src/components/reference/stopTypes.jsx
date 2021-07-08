@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react'
+import useFetch from '../../hooks/useFetch'
 
 const StopTypes = () => {
+
+    const { data, loading } = useFetch(``);
 
     const [stopTypes, setStopTypes] = useState(0)
 
