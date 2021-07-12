@@ -20,8 +20,9 @@ const Stop = ({ match }) => {
   const { data, loading } = useFetch(`https://api.tfl.gov.uk/StopPoint/${stopCode}`);
 
   useEffect(() => {
-  
     }, []);
+
+//console.log(data)
 
   return(
     loading ? <div className="loader"></div> :
@@ -36,7 +37,7 @@ const Stop = ({ match }) => {
 
             {/* <Places stopCode={stopCode}/> */}
             
-            <Timetable stopName={stopName} stopCode={stopCode} />
+            {/* <Timetable stopName={stopName} stopCode={stopCode} /> */}
 
             <h3>Other services from this stop : </h3>
             {data && data.lineModeGroups.map(lmg => (
