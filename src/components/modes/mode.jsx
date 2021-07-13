@@ -12,13 +12,10 @@ const Mode = ({ name }) => {
     },[]);
 
     const btn = data && data.map(ind => (
-        <Link className="btn" key={Math.random()} to={`/${name}/${ind.id}`} >{ind.id}</Link>
+        
+        name === 'tube' ? <Link className={`${ind.id} btn`} key={Math.random()} to={`/${name}/${ind.id}`} >{ind.id}</Link> : 
+        <Link className="btn corporateBlue" key={Math.random()} to={`/${name}/${ind.id}`} >{ind.id}</Link> 
     ))
-   
-
-   
-
-    
 
     const renderName = () => {
         if(name.includes('-')){

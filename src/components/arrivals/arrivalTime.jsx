@@ -5,42 +5,77 @@ const ArrivalTime = ({ stopCode }) => {
 
   const { data, loading } = useFetch(`https://api.tfl.gov.uk/stoppoint/${stopCode}/arrivals`);
 
-useEffect(() => {
- 
-},[])
+  
 
-console.log(data)
+{/*
+
+  const [data, setData] = useState(0);
+  const [time, setTime] = useState(0)
+  const url = `https://api.tfl.gov.uk/stoppoint/${stopCode}/arrivals`;
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      data && data.map((t) => setTime(t.timeToStation));
+      fetch(url)
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+          setData(data);
+      });
+    }, 10000)
+
+    return () => clearInterval(intervalId);
+      
+  },[url, useState])
+
+*/ }
+
+//console.log(data)
+
+  const renderName = (x) => {
+    if(x * 60 === 0) {return("Arrived")}
+    if(x * 60 < 60 ){return ( x * 60 + " Seconds")}
+    if(x === 1 ){return ( x + " Minute")}
+    if(x > 1 ){return (x + " Minutes")}
+    
+  }
+
+  const tts = data && data.map(time => (time))
+  //console.log(tts)
+  const orderedList = tts && tts.sort((a,b) => a.timeToStation > b.timeToStation ? 1 : -1);
 
   return (
       <>
-      {loading ? <div className="loader"></div> : 
-        data && data.map(at => 
-        at.sort((a,b) => (a.timeToStation > b.timeToStation ? 
-          <ul>
-            <li>bearing: {at.bearing}</li>
-            <li>currentLocation: {at.currentLocation}</li>
-            <li>destinationName: {at.destinationName}</li>
-            <li>destinationNaptanId: {at.destinationNaptanId}</li>
-            <li>direction: {at.direction}</li>
-            <li>expectedArrival: {at.expectedArrival}</li>
-            <li>id: {at.id}</li>
-            <li>lineId: {at.lineId}</li>
-            <li>lineName: {at.lineName}</li>
-            <li>modeName: {at.modeName}</li>
-            <li>naptanId: {at.naptanId}</li>
-            <li>operationType: {at.operationType}</li>
-            <li>platformName: {at.platformName}</li>
-            <li>stationName: {at.stationName}</li>
-            <li>timeToLive: {at.timeToLive}</li>
-            <li>timeToStation: {Math.floor(at.timeToStation / 60)} minutes</li>
-            <li>timestamp: {at.timestamp}</li>
-            <li>towards: {at.towards}</li>
-            <li>vehicleId: {at.vehicleId}</li>
-        </ul>
-        : null)
-        )
-        )
-      }
+      <h1>Live Arrivals</h1>
+      {loading ? <div className="loader"></div> :
+          orderedList && orderedList.map(time => (
+            <div className="arrivals">
+            <h1 style={{color: 'red'}}>{renderName(Math.floor(time.timeToStation / 60))}</h1>
+            <h3>{time.lineName} service arriving on {time.modeName == 'tube' ? "" : "stand"} {time.platformName} to {time.towards}</h3>
+         <ul className="arrivals-data">
+            {/* <li>bearing: {time.bearing}</li> */}
+            <li>currentLocation: {time.currentLocation}</li>
+            <li>destinationName: {time.destinationName}</li>
+            {/* <li>destinationNaptanId: {time.destinationNaptanId}</li> */}
+            <li>direction: {time.direction}</li>
+            {/* <li>expectedArrival: {time.expectedArrival}</li> */}
+            {/* <li>id: {time.id}</li> */}
+            {/* <li>lineId: {time.lineId}</li> */}
+            <li>lineName: {time.lineName}</li>
+            <li>modeName: {time.modeName}</li>
+            {/* <li>naptanId: {time.naptanId}</li> */}
+            {/* <li>operationType: {time.operationType}</li> */}
+            <li>platformName: {time.platformName}</li>
+            <li>stationName: {time.stationName}</li>
+            {/* <li>timeToLive: {time.timeToLive}</li> */}
+            <li>timeToStation: {renderName(Math.floor(time.timeToStation / 60))}</li>
+            {/* <li>timestamp: {time.timestamp}</li> */}
+            <li>towards: {time.towards}</li>
+            <li>vehicleId: {time.vehicleId}</li>
+          </ul> 
+          </div>
+          ))
+       } 
      </>
   )
 }

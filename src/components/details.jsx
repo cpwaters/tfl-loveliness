@@ -32,8 +32,11 @@ const Details = ({ match }) => {
             <img className="details_header-right-two-logo" src={window.location.origin + `/src/assets/${data[0].id}.png`} alt={`${data[0].name} corporate logo`} />
           </div>
           }
-
         </div>
+
+        {match.path.includes('/tube/') ?
+            <img className="details_line_map" src={window.location.origin + `/src/assets/line-map-imgs/${data[0].id}-line-map.png`} alt={`${data[0].name} corporate logo`} /> : null
+          }
         <Route routeNumber={routeNumber} />
         <Stops mode={data[0].modeName} detail={data} amatch={match.params.id} /> 
         {/* <Stations detail={detail} amatch={match.params.id} />   */}
