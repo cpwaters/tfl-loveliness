@@ -1,3 +1,5 @@
+@use 'colors';
+
 .lineModeGroups {
     display: flex;
     flex-direction:column;
@@ -18,5 +20,12 @@
     &_body {
         display: flex;
         flex-wrap:wrap;
+
+        a {
+            width:22%;
+            font-size:22px;
+            background: rgba(0,25,168,1);
+            color:#fff;
+        }
     }
 }

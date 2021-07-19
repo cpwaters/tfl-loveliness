@@ -2,6 +2,7 @@ import React,{ useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import useFetch from '../../hooks/useFetch'
 import Filter from '../../filters/order'
+import BusFilter from './busFilter'
 
 const Mode = ({ name }) => {
 
@@ -12,7 +13,6 @@ const Mode = ({ name }) => {
     },[]);
 
     const btn = data && data.map(ind => (
-        
         name === 'tube' ? <Link className={`${ind.id} btn`} key={Math.random()} to={`/${name}/${ind.id}`} >{ind.id}</Link> : 
         <Link className="btn corporateBlue" key={Math.random()} to={`/${name}/${ind.id}`} >{ind.id}</Link> 
     ))
@@ -38,10 +38,11 @@ const Mode = ({ name }) => {
                 <img className="details_header-right-two-logo" src={window.location.origin + `/src/assets/${name}.png`} alt={`${name} corporate logo`} />
             </div>
             <p>mode</p>
-        
+            {name === 'bus' ? <BusFilter btn={btn} data={data}/> : 'null'}
             {/* {loading ? <div className="loader"></div> : <Filter name={name} modeObjId={filter} />}  */}
-            { btn }
-                
+            <div className="mode_body">
+                { btn }
+            </div>
         </div>
         );
 }

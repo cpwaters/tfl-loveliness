@@ -10,6 +10,12 @@
     flex-direction: column;
     text-decoration: none;
     color: #333;
+
+    a {
+        width:22%;
+        font-size:22px;
+    }
+
     &:hover {
         background: rgba(0,25,168,1);
         color:#fff;

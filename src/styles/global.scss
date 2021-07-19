@@ -1,3 +1,4 @@
+@import '_colors.scss';
 @import '_navbar.scss';
 @import '_map.scss';
 @import '_details.scss';
@@ -11,59 +12,7 @@
 @import '_reference.scss';
 @import '_route.scss';
 @import '_loader.scss';
-@import '_arrivals';
-
-
-/* COLOURS */
-$corporateBlue: rgba(0,25,168,1);
-$corporateDarkGrey: rgba(65,75,86,1);
-$corporateBlack: rgba(0,0,0,1);
-$corporateRed: rgba(220,36,31,1);
-$corporateYellow: rgba(255,206,0,1);
-$corporateWhite: rgba(255,255,255,1);
-$corporateGrey: rgba(134,143,152,1);
-$corporateGreen: rgba(0,114,41,1);
-
-$tfl: $corporateBlue;
-$emirates: $corporateRed;
-$bus: $corporateRed;
-$coaches: rgba(241,171,0,1);
-$elizabeth: rgba(147,100,204,1);
-$cycle: $corporateRed;
-$dial-a-ride: rgba(183,39,191,1);
-$dlr: rgba(0,175,173,1);
-$overground:rgba(239,123,16,1);
-$river: rgba(0,160,226,1);
-$taxi: rgba(132,128,215,1);
-$tfl-rail: $corporateBlue;
-$trams: rgba(0,189,25,1);
-$tube: $corporateBlue;
-$visitors: rgba(220,0,107,1);
-
-$bakerloo: rgba(178,99,0,1);
-$central: $corporateRed;
-$circle: rgba(255,211,41,1);
-$district: rgba(0,125,50,1);
-$hammersmith-city: rgba(244,169,190,1);
-$jubilee: rgba(161,165,167,1);
-$metropolitan: rgba(155,0,88,1);
-$northern: $corporateBlack;
-$piccadilly: $corporateBlue;
-$victoria: rgba(0,152,216,1);
-$waterloo-city: rgba(147,206,186,1);
-
-.corporateBlue {background:$corporateBlue;color:$corporateWhite;}
-.bakerloo {background: $bakerloo;color:$corporateWhite;}
-.central {background:$central;color:$corporateWhite;}
-.circle {background:$circle;color:$corporateBlack;}
-.district {background:$district;color:$corporateWhite;}
-.hammersmith-city {background:$hammersmith-city;color:$corporateBlack;}
-.jubilee {background:$jubilee;color:$corporateBlack;}
-.metropolitan {background:$metropolitan;color:$corporateWhite;}
-.northern {background:$northern;color:$corporateWhite;}
-.piccadilly {background:$piccadilly;color:$corporateWhite;}
-.victoria {background:$victoria;color:$corporateWhite;}
-.waterloo-city {background:$waterloo-city;color:$corporateBlack;}
+@import '_arrivals.scss';
 
 
 .App {
@@ -93,13 +42,13 @@ $waterloo-city: rgba(147,206,186,1);
   margin:5px;
   display:inline-flex;
   max-width:100%;
-  width:28%;
+  width:22%;
   box-shadow:#ccc 0px 0px 8px 1px;
   text-decoration:none;
 }
 .btn:hover {
   box-shadow:#ccc 0px 0px 0px 0px;
-  color:#fff;
+  color: $corporateWhite;
   background:rgba(0,25,168,0.5);
   text-decoration:none;
 }
