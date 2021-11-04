@@ -9,7 +9,7 @@ const Details = ({ match }) => {
   const routeNumber = match.params.id;
   const { data, loading } = useFetch(`https://api.tfl.gov.uk/line/${routeNumber}`);
 
-  console.log(data)
+  //console.log(data)
 
   useEffect(() => {
 
