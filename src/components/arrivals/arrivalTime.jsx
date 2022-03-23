@@ -11,11 +11,25 @@ useEffect(() => {
 
 console.log(data)
 
+function getTimeClock() {
+  const currentTime = document.getElementById('time');
+  
+  const time = new Date();
+  let h = time.getHours();
+  let m = time.getMinutes();
+  let s = time.getSeconds();
+  h = h <= 9 ? "0"+h : h ;
+  s = s <= 9 ? "0"+s : s ;
+  currentTime.innerHTML = h+":"+m+":"+s;
+  }
+  
+  setInterval(getTimeClock,10);
+
   return (
       <>
+      {/*}
       {loading ? <div className="loader"></div> : 
-        data && data.map(at => 
-        at.sort((a,b) => (a.timeToStation > b.timeToStation ? 
+        data && data.map(at => (
           <ul>
             <li>bearing: {at.bearing}</li>
             <li>currentLocation: {at.currentLocation}</li>
@@ -37,10 +51,22 @@ console.log(data)
             <li>towards: {at.towards}</li>
             <li>vehicleId: {at.vehicleId}</li>
         </ul>
-        : null)
         )
+
         )
-      }
+      } */}
+
+      <div className="board-frame">
+        <div className="board-frame-inner">
+          <div className="board-screen-outer">
+            <div className="callingAtStrip">
+              <span className="callingAt">Calling at: </span>
+              <span id="cad" className="callingAtDestinations"></span>
+            </div>
+            <div id="time" className="time"></div>
+          </div>
+        </div>
+      </div>
      </>
   )
 }

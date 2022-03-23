@@ -6,6 +6,7 @@ import Mode from './components/modes/mode'
 import Stop from './components/stops/stop'
 import Reference from './components/reference/reference'
 import Elizabeth from './components/elizabeth'
+import DepartureBoards from './components/departureBoards'
 import useFetch from './hooks/useFetch'
 import './styles/global.scss'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -32,6 +33,7 @@ const App = () => {
             { data && data.map((mode) => (<Route key={mode.modeName+'id'} exact path={`/${mode.modeName}/:id`} component={Details} />) )}
             { data && data.map((mode) => (<Route key={Math.random()} exact path={`/${mode.modeName}/:id/:stop`} component={Stop} />) )}
             <Route exact path="/elizabeth"><Elizabeth name={'Elizabeth'}/></Route>
+            <Route exact path="/departureBoards" component={DepartureBoards}></Route>
             <Route exact path="/reference" component={Reference}></Route>
           </Switch>
         </div>

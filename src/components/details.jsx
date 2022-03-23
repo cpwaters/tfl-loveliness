@@ -3,13 +3,14 @@ import Stations from './stops/stations'
 import Stops from './stops/stops'
 import Route from './route/route'
 import useFetch from '../hooks/useFetch'
+import RouteMap from './routeMap'
 
 const Details = ({ match }) => {
 
   const routeNumber = match.params.id;
   const { data, loading } = useFetch(`https://api.tfl.gov.uk/line/${routeNumber}`);
 
-  console.log(data)
+  console.log();
 
   useEffect(() => {
 
@@ -20,6 +21,7 @@ const Details = ({ match }) => {
       <div className="details">
         <div className="details_header">
           <div className="details_header-left">
+            <h2>Page Name: details.jsx</h2>
             <h2>{data && data[0].name} line details</h2>
             <p>Line name: {data && data[0].name}</p>  
             <p>Mode of transit: {data && data[0].modeName}</p>   
@@ -34,6 +36,7 @@ const Details = ({ match }) => {
           }
 
         </div>
+        <RouteMap routeNumber={routeNumber}/>
         <Route routeNumber={routeNumber} />
         <Stops mode={data[0].modeName} detail={data} amatch={match.params.id} /> 
         {/* <Stations detail={detail} amatch={match.params.id} />   */}

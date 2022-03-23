@@ -23,6 +23,7 @@ const Navbar = ({ modes }) => {
                 }
                 )}
                 <Link to="/elizabeth">The Elizabeth Line &amp; Crossrail</Link>
+                <Link to="/departureBoards">Departure Board</Link>
                 <Link to="/reference">Reference</Link>
             </div>
         </nav>

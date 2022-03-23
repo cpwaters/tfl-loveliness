@@ -11,14 +11,9 @@ const Mode = ({ name }) => {
         
     },[]);
 
-    const btn = data && data.map(ind => (
-        <Link className="btn" key={Math.random()} to={`/${name}/${ind.id}`} >{ind.id}</Link>
+    const btn = data && data.map((ind,i) => (
+        <Link className="btn" key={i} to={`/${name}/${ind.id}`} >{ind.id}</Link>
     ))
-   
-
-   
-
-    
 
     const renderName = () => {
         if(name.includes('-')){
@@ -34,7 +29,7 @@ const Mode = ({ name }) => {
         }
     }
     return(
-        loading ?<div className="loader"></div> : 
+        loading ? <div className="loader"></div> : 
         <div className="mode">
             <div className="mode_header">
             {renderName()} 
@@ -44,7 +39,6 @@ const Mode = ({ name }) => {
         
             {/* {loading ? <div className="loader"></div> : <Filter name={name} modeObjId={filter} />}  */}
             { btn }
-                
         </div>
         );
 }

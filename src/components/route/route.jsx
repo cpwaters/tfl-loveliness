@@ -19,9 +19,9 @@ const Route = ({ routeNumber }) => {
         loading ? <div className="loader"></div> :
         <div className="route">
             <Direction direction={direction} setDirection={setDirection}/>
-            {data && data.routeSections.map(sec => (
+            {data && data.routeSections.map((sec,i )=> (
                 direction === sec.direction ?
-            <p key={Math.random()} className="direction"><span>{direction}</span> journey from <Link to={`${routeNumber}/${sec.originator}`} >{sec.originationName}</Link> terminating at <Link to={`${routeNumber}/${sec.destination}`} >{sec.destinationName}</Link></p> 
+            <p key={i} className="direction"><span>{direction}</span> journey from <Link to={`${routeNumber}/${sec.originator}`} >{sec.originationName}</Link> terminating at <Link to={`${routeNumber}/${sec.destination}`} >{sec.destinationName}</Link></p> 
                 : null
                 )
             )}

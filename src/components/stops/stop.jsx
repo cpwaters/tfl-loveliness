@@ -4,7 +4,7 @@ import LineModeGroups from './lineModeGroups';
 //import * from 'apiFunctions';
 import MapEmbed from '../map'
 import Arrivals from '../arrivals/arrivals2'
-import Timetable from '../timetable'
+//import DepartureBoard from '../departureBoard'
 import ArrivalTime from '../arrivals/arrivalTime'
 import Places from '../places/places'
 import useFetch from '../../hooks/useFetch'

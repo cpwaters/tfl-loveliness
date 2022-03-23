@@ -17,9 +17,9 @@ const Stops = ({ amatch, mode }) => {
   return(
     loading ? <div className="loader"></div> :
       <div> 
-            { data && data.map(item => {
+            { data && data.map((item,i)=> {
             return (
-                <Link key={Math.random()} to={`/${m}/${line}/${item.id}`} className="stops-card">
+                <Link key={i} to={`/${m}/${line}/${item.id}`} className="stops-card">
                     <p>{item.commonName}</p>
                 </Link>
               )}
