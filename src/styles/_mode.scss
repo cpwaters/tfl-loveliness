@@ -1,6 +1,14 @@
 .mode {
     width:100%;
 
+    a {
+        width:100%;
+        font-size:22px;
+        @media screen and (min-width: 1005px){
+            width:45%;
+        }
+    }
+
     &_header {
         display:flex;
         flex-direction: row;
@@ -9,7 +17,7 @@
         border-radius:5px;
         padding: 10px;
         margin-bottom:3%;
-        // background-image: url(../assets/tfl1.png);
+        
         h2{
             align-self: center;
         }
@@ -17,5 +25,12 @@
         p, img {
             width:50%;
         }
+    }
+
+    &_body {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
     }
 }

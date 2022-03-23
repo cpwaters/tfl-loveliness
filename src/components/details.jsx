@@ -34,7 +34,6 @@ const Details = ({ match }) => {
             <img className="details_header-right-two-logo" src={window.location.origin + `/src/assets/${data[0].id}.png`} alt={`${data[0].name} corporate logo`} />
           </div>
           }
-
         </div>
         <RouteMap routeNumber={routeNumber}/>
         <Route routeNumber={routeNumber} />

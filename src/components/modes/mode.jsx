@@ -2,6 +2,7 @@ import React,{ useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import useFetch from '../../hooks/useFetch'
 import Filter from '../../filters/order'
+import BusFilter from './busFilter'
 
 const Mode = ({ name }) => {
 
@@ -36,7 +37,7 @@ const Mode = ({ name }) => {
                 <img className="details_header-right-two-logo" src={window.location.origin + `/src/assets/${name}.png`} alt={`${name} corporate logo`} />
             </div>
             <p>mode</p>
-        
+            {name === 'bus' ? <BusFilter btn={btn} data={data}/> : 'null'}
             {/* {loading ? <div className="loader"></div> : <Filter name={name} modeObjId={filter} />}  */}
             { btn }
         </div>

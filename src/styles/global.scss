@@ -1,3 +1,4 @@
+@import '_colors.scss';
 @import '_navbar.scss';
 @import '_map.scss';
 @import '_details.scss';
@@ -40,15 +41,13 @@
   margin:5px;
   display:inline-flex;
   max-width:100%;
-  width:28%;
+  width:22%;
   box-shadow:#ccc 0px 0px 8px 1px;
   text-decoration:none;
-  color:#fff;
-  background:rgba(0,25,168,1);
 }
 .btn:hover {
   box-shadow:#ccc 0px 0px 0px 0px;
-  color:#fff;
+  color: $corporateWhite;
   background:rgba(0,25,168,0.5);
   text-decoration:none;
 }

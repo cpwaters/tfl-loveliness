@@ -1,3 +1,8 @@
+@use 'colors';
+
 .modes {
-    
+    .btn{
+        background: colors.$corporateBlue;
+        color: colors.$corporateWhite;
+    }
 }
