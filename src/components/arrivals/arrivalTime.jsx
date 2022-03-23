@@ -5,31 +5,6 @@ const ArrivalTime = ({ stopCode }) => {
 
   const { data, loading } = useFetch(`https://api.tfl.gov.uk/stoppoint/${stopCode}/arrivals`);
 
-  
-
-{/*
-
-  const [data, setData] = useState(0);
-  const [time, setTime] = useState(0)
-  const url = `https://api.tfl.gov.uk/stoppoint/${stopCode}/arrivals`;
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      data && data.map((t) => setTime(t.timeToStation));
-      fetch(url)
-      .then(res => {
-        return res.json();
-      })
-      .then(data => {
-          setData(data);
-      });
-    }, 10000)
-
-    return () => clearInterval(intervalId);
-      
-  },[url, useState])
-
-*/ }
-
 //console.log(data)
 
   const renderName = (x) => {
