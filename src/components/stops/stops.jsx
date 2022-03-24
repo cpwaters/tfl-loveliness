@@ -22,19 +22,9 @@ const Stops = ({ amatch, mode }) => {
   const regExLetNum = /([A-Z][0-9])/;
   const regExWord = /[A-Z][a-z]\w+/;
 
-  let color = 'black';
-
-  // gets each div circle and return a new color for it. 
-  const getCircleColor = async (color) => {
-    await data;
-    const circleData = await document.querySelectorAll('.circle-letter');
-    circleData.forEach((circle) => {return circle.style.backgroundColor = color});
-  }
-  getCircleColor(color);
-
   // get letter from div after loaded
-  const all = data && data.map((item) => console.log(item));
-  console.log(all)
+  //const all = data && data.map((item) => console.log(item));
+  //console.log(all)
 
   return(
     loading ? <div className="loader"></div> :
@@ -45,11 +35,11 @@ const Stops = ({ amatch, mode }) => {
                     <p>{item.commonName}</p>
                     {
                       item.lines.map((line, i) => (
-                        //console.log(line),
-                        line.name.match(regExLetNum) || !isNaN(line.name) ? '' :
-                        <div className="circle-letter" key={i}>
-                          {!isNaN(line.name) || line.name === nameStr ? null : line.name.charAt(0)}
-                        </div>
+                        line.name.match(regExLetNum) || !isNaN(line.name) ? null :
+                          !isNaN(line.name) || line.name === nameStr ? null : 
+                            <div className={`circle-letter ${line.name.substring(0, 3)}`} key={i}>
+                              {line.name.charAt(0)}
+                            </div>
                         )
                       )
                     } 

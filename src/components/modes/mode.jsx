@@ -37,7 +37,7 @@ const Mode = ({ name }) => {
                 <img className="details_header-right-two-logo" src={window.location.origin + `/src/assets/${name}.png`} alt={`${name} corporate logo`} />
             </div>
             <p>mode</p>
-            {name === 'bus' ? <BusFilter btn={btn} data={data}/> : 'null'}
+            {name === 'bus' ? <BusFilter btn={btn} data={data}/> : null}
             {/* {loading ? <div className="loader"></div> : <Filter name={name} modeObjId={filter} />}  */}
             { btn }
         </div>

@@ -11,7 +11,7 @@ const routeMap = ({ routeNumber }) => {
     let toLon = '';
     let toLat = ''
 
-    console.log('routeNumData: ',RouteNumData);
+    //console.log('routeNumData: ',RouteNumData);
     //console.log('StopCodeData: ',StopCodeData);
 ;
     return (

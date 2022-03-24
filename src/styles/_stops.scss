@@ -1,3 +1,5 @@
+@use 'colors';
+
 .stops-card {
     display:inline-flex;
     max-width:100%;
@@ -13,18 +15,34 @@
     flex-wrap:wrap;
     flex-direction: row;
 
+    p {
+        width:100%;
+    }
+
     .circle-letter {
-        background-color: green;
         max-width:100%;
         color:#fff;
         font-size:12px;
         border-radius:50%;
-        /*width: 7%;*/
+        width: 15px;
+        height:15px;
         display:flex;
         justify-content: space-around;
         font-weight:bold;
         margin-right: 2px;
     }
+
+    .Bak {background-color:$bakerloo;}
+    .Cen {background-color:$central;}
+    .Cir {background-color:$circle;}
+    .Dis {background-color:$district;}
+    .Ham {background-color:$hammersmith-city;}
+    .Jub {background-color:$jubilee;}
+    .Met {background-color:$metropolitan;}
+    .Nor {background-color:$northern;}
+    .Pic {background-color:$piccadilly;}
+    .Vic {background-color:$victoria;}
+    .Wat {background-color:$waterloo-city;}
 
     a {
         width:22%;
