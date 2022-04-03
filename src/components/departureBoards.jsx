@@ -1,23 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import useFetch from '../hooks/useFetch'
 
-const DepartureBoard = ({ lineId, stopName, fromStopCode, toStopCode }) => {
+const DepartureBoard = ({ destinations, loading }) => {
 
-    lineId = 'northern';
-    fromStopCode = '940GZZLUMDN' // Morden
-    toStopCode = '940GZZLUEGW' // Edgeware Rd
-
-    const { data, loading } = useFetch(`https://api.tfl.gov.uk/line/${lineId}/timetable/${fromStopCode}/to/${toStopCode}`);
-    //const { data, loading } = useFetch(`https://api.tfl.gov.uk/line/northern/timetable/940GZZLUMDN/to/940GZZLUEGW`);
-
-    console.log(data && data.timetable);
-    
-    // stops and time to stop is:
-    // data.timetable.routes[x].stationIntervals[x].intervals[x].stopId => "940GZZLUMDN" ;
-    // data.timetable.routes[x].stationIntervals[x].intervals[x].timeToArrival => 2 (number in minutes);
-
-
-    /* Logic */
+    /* Clock Logic */
     const [isClock, setIsClock] = useState()
 
     useEffect(() => {
@@ -50,27 +36,47 @@ const DepartureBoard = ({ lineId, stopName, fromStopCode, toStopCode }) => {
         },
       ];
       
-      const arrivalObj = arrivals.map(obj => Object.entries(obj).map(([key,val]) => <div className={key}>{val}</div>));
+      const arrivalObj = arrivals.map(obj => Object.entries(obj).map(([key,val],i) => <div key={i} className={key}>{val}</div>));
     
-      const destinations = [
-        'Ashburys',
-        'Gorton',
-        "Guide Bridge",
-        'Flowery Field',
-        'Newton for Hyde',
-        'Godley',
-        'Hattersley',
-        'Broadbottom',
-        'Dinting',
-        'Glossop',
-        'Hadfield'
-      ];
-      
+      // const destinations = [
+      //   'Ashburys',
+      //   'Gorton',
+      //   "Guide Bridge",
+      //   'Flowery Field',
+      //   'Newton for Hyde',
+      //   'Godley',
+      //   'Hattersley',
+      //   'Broadbottom',
+      //   'Dinting',
+      //   'Glossop',
+      //   'Hadfield'
+      // ];
+
+      let destNames = [];
+
+      let load = false;
+
+      // destinations.map((statID, i) => {
+      //   //const { data, loading } = useFetch(`https://api.tfl.gov.uk/stoppoint/${statID}`);
+      //   destNames.push(data);
+      // })
+
+      console.log(destinations)
+
+      //const {data, loading} = useFetch(`https://api.tfl.gov.uk/stoppoint/${ds}`);
+
+      const desName = (ds) => {
+        const data = useFetch(`https://api.tfl.gov.uk/stoppoint/${ds}`);
+        destNames.push(data);
+      }
+
+      destinations.map((de,i) => desName(de));
+
       let cad = '';
-      destinations.map((d,i) => i === 0 ? cad += d : cad += ", " + d);
+      destNames.map((d,i) => i === 0 ? cad += d : cad += ", " + d);
   
     return ( 
-        loading ? <div className="loader"></div> :
+        load ? <div className="loader"></div> :
         <>
         <div className="board-frame">
           <div className="board-frame-inner">

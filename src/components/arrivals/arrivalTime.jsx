@@ -2,28 +2,34 @@ import React, {useState, useEffect} from 'react'
 import useFetch from '../../hooks/useFetch'
 import DepartureBoard from '../departureBoards';
 
-const ArrivalTime = ({ stopCode }) => {
+const ArrivalTime = () => {
 
-  const { data, loading } = useFetch(`https://api.tfl.gov.uk/stoppoint/${stopCode}/arrivals`);
-
- 
-
- console.log(data)
-
-  const renderName = (x) => {
-    if(x * 60 === 0) {return("Arrived")}
-    if(x * 60 < 60 ){return ( x * 60 + " Seconds")}
-    if(x === 1 ){return ( x + " Minute")}
-    if(x > 1 ){return (x + " Minutes")}
-    
-  }
-
+  //const { data, loading } = useFetch(`https://api.tfl.gov.uk/stoppoint/${stopCode}/arrivals`);
+  //console.log(data)
+  // const renderName = (x) => {
+  //   if(x * 60 === 0) {return("Arrived")}
+  //   if(x * 60 < 60 ){return ( x * 60 + " Seconds")}
+  //   if(x === 1 ){return ( x + " Minute")}
+  //   if(x > 1 ){return (x + " Minutes")}
+  // }
   //const tts = data && data.map(time => (time))
   //console.log(tts)
   //const orderedList = tts && tts.sort((a,b) => a.timeToStation > b.timeToStation ? 1 : -1);
 
+    const lineId = 'northern';
+    const fromStopCode = '940GZZLUMDN' // Morden
+    const toStopCode = '940GZZLUEGW' // Edgeware Rd
 
-  
+    const { data, loading } = useFetch(`https://api.tfl.gov.uk/line/${lineId}/timetable/${fromStopCode}/to/${toStopCode}`);
+
+    const destinations = [];
+
+    data && data.timetable.routes.map((si,i) => {
+      si.stationIntervals.map((staInt,i) => 
+        staInt.intervals.map((stoId,i) => {
+          destinations.push(stoId.stopId);
+        }));
+    });
 
   return (
       <>
@@ -56,7 +62,7 @@ const ArrivalTime = ({ stopCode }) => {
         )
       } */}
 
-       <DepartureBoard />
+       <DepartureBoard loading={loading} destinations={destinations}/>
      </>
   )
 }

@@ -22,7 +22,7 @@ const Stop = ({ match }) => {
   useEffect(() => {
     }, []);
 
-//console.log(data)
+  //console.log(data)
 
   return(
     loading ? <div className="loader"></div> :
