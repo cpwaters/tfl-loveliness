@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import useFetch from '../hooks/useFetch'
 
-const DepartureBoard = ({ destinations, loading }) => {
+const DepartureBoard = ({ destinations }) => {
+
+  let destNames = [];
+    const [hasDest, setHasDest] = useState(destNames);
+    const [isLoading, SetIsLoading] = useState();
 
     /* Clock Logic */
-    const [isClock, setIsClock] = useState()
-
+    const [isClock, setIsClock] = useState();
     useEffect(() => {
         setInterval(() => {
             const time = new Date();
@@ -52,9 +55,8 @@ const DepartureBoard = ({ destinations, loading }) => {
       //   'Hadfield'
       // ];
 
-      let destNames = [];
+      
 
-      let load = false;
 
       // destinations.map((statID, i) => {
       //   //const { data, loading } = useFetch(`https://api.tfl.gov.uk/stoppoint/${statID}`);
@@ -66,17 +68,18 @@ const DepartureBoard = ({ destinations, loading }) => {
       //const {data, loading} = useFetch(`https://api.tfl.gov.uk/stoppoint/${ds}`);
 
       const desName = (ds) => {
-        const data = useFetch(`https://api.tfl.gov.uk/stoppoint/${ds}`);
+        const {data,loading} = useFetch(`https://api.tfl.gov.uk/stoppoint/${ds}`);
         destNames.push(data);
+        SetIsLoading(loading);
       }
 
       destinations.map((de,i) => desName(de));
 
       let cad = '';
-      destNames.map((d,i) => i === 0 ? cad += d : cad += ", " + d);
+      hasDest.map((d,i) => i === 0 ? cad += d : cad += ", " + d);
   
     return ( 
-        load ? <div className="loader"></div> :
+        isLoading ? <div className="loader"></div> :
         <>
         <div className="board-frame">
           <div className="board-frame-inner">
