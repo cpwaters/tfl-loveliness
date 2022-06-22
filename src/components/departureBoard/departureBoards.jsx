@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import useFetch from '../hooks/useFetch'
+import React, { useEffect, useState } from 'react';
+import useFetch from '../../hooks/useFetch';
+import Destinations from './destinations';
 
 const DepartureBoard = ({ destinations }) => {
 
@@ -65,15 +66,8 @@ const DepartureBoard = ({ destinations }) => {
 
       console.log(destinations)
 
-      //const {data, loading} = useFetch(`https://api.tfl.gov.uk/stoppoint/${ds}`);
+      //const {data, loading} = useFetch(`https://api.tfl.gov.uk/stoppoint/${ds}`)
 
-      const desName = (ds) => {
-        const {data,loading} = useFetch(`https://api.tfl.gov.uk/stoppoint/${ds}`);
-        destNames.push(data);
-        SetIsLoading(loading);
-      }
-
-      destinations.map((de,i) => desName(de));
 
       let cad = '';
       hasDest.map((d,i) => i === 0 ? cad += d : cad += ", " + d);
@@ -93,7 +87,7 @@ const DepartureBoard = ({ destinations }) => {
                 <div className="singleArrival">{arrivalObj[1]}</div>
               </div>
               
-            
+              <Destinations destinations={destinations} />
               <div className="clock">{isClock}</div>
             </div>
           </div>
