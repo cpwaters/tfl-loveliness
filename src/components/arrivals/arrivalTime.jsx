@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import useFetch from '../../hooks/useFetch'
-import DepartureBoard from '../departureBoards';
+import DepartureBoard from '../departureBoard/departureBoards';
 
 const ArrivalTime = () => {
 
