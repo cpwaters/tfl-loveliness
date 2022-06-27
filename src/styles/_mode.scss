@@ -8,6 +8,7 @@
         font-size:22px;
         @media screen and (min-width: 1005px){
             width:45%;
+            
         }
     }
 
@@ -40,4 +41,6 @@
         background: colors.$corporateBlue;
         color: colors.$corporateWhite;
     }
+
+    .bus {width:5%;}
 }

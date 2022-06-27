@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import useFetch from '../../hooks/useFetch'
 import Filter from '../../filters/order'
 import BusFilter from './busFilter'
+import { unhyphen } from '../apiFunctions';
 
 const Mode = ({ name }) => {
 
@@ -12,9 +13,9 @@ const Mode = ({ name }) => {
         
     },[]);
 
-    const btn = data && data.map((ind,i) => (
-        <Link className="btn" key={i} to={`/${name}/${ind.id}`} >{ind.id}</Link>
-    ))
+    const stdBtn = data && data.map((ind,i) => (
+        <Link className={`btn ${name}`} key={i} to={`/${name}/${ind.id}`} >{ unhyphen(ind.id) }</Link>
+    ));
 
     const renderName = () => {
         if(name.includes('-')){
@@ -37,9 +38,11 @@ const Mode = ({ name }) => {
                 <img className="details_header-right-two-logo" src={window.location.origin + `/src/assets/${name}.png`} alt={`${name} corporate logo`} />
             </div>
             <p>mode</p>
-            {name === 'bus' ? <BusFilter btn={btn} data={data}/> : null}
+            {name === 'bus' ? 
+            <BusFilter data={data} name={name}/> 
+            :  stdBtn }
             {/* {loading ? <div className="loader"></div> : <Filter name={name} modeObjId={filter} />}  */}
-            { btn }
+            
         </div>
         );
 }

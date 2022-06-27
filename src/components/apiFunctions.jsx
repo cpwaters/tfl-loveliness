@@ -1,6 +1,13 @@
-import React,{ useEffect, useState } from 'react'
+import React from 'react';
 
-const AllApiCalls = () => {
+export const unhyphen = (name) => {
+    if (name) {
+        name = name.replaceAll('-',' ');
+        return name;
+    }
+}
+
+export const AllApiCalls = () => {
 
     /*
     Contents
@@ -50,10 +57,10 @@ const AllApiCalls = () => {
     const page = 1;
     const bikePointId = 'BikePoints_303';
     const zoom = '0'; //zoom for TRAVEL TIME overlay maps
-    const mapCenterLat = 00000000;
-    const mapCenterLon = -00000000;
-    const pinLat = 00000000;
-    const pinLon = -00000000;
+    const mapCenterLat = '00000000';
+    const mapCenterLon = '-00000000';
+    const pinLat = '00000000';
+    const pinLon = '-00000000';
     const vehicleIds = 'LX58CFV'; // can be multiple comma separated
     const roadIds = 'A406'; 
     const disruptionIds = '?' // 404 on api call
@@ -289,5 +296,3 @@ const AllApiCalls = () => {
 
 
 }
-
-export default AllApiCalls
