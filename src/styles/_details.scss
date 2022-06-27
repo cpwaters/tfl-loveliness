@@ -4,11 +4,18 @@
 
     &_header{
         display:flex;
-        flex-direction: row;
+        flex-direction: column-reverse;
         justify-content: space-between;
+        border:1px solid #aaa;
+        border-radius:5px;
+        padding: 10px;
+        margin-bottom:3%;
+        align-items: center;
 
         &-left{
-            width:50%;
+            width:100%;
+            text-align: center;
+            display:none;
         } 
         
         &-right {
@@ -16,7 +23,6 @@
                 display: flex;
                 justify-content: center;
                 flex-direction: row;
-                width: 15%;
                 align-self:center;
             }
             &-one {
@@ -46,5 +52,17 @@
 
     &_line_map{
         max-width:100%;
+    }
+
+    @media (min-width:400px){
+        &_header{
+            &-left {
+                width:50%;
+                text-align: left;
+            }
+        }
+    }
+    @media (min-width:768px){
+
     }
 }

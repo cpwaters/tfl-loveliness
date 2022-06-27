@@ -1,12 +1,15 @@
+@use 'colors';
+
 .navbar {
     display: flex;
-    min-width:270px;
-    padding: 20px;
-    background: rgba(0,25,168,1);
+    padding: 8px;
+    background: $corporateDarkGrey;
     align-items: flex-start;
     flex-direction: column;
     justify-content: flex-start;
     flex-wrap: wrap;
+
+    .title {display:none;}
 
     a {
         text-decoration:none;
@@ -32,9 +35,81 @@
             font-weight: 700;
             text-transform: capitalize;
 
+            div {
+                display:none;
+            }
+
             &:hover {
-                background: rgba(0,25,168,0.5);
+                background:$corporateBlue;
+                border-radius:60%;
             }
         }
     }
+
+    &_small_logo {
+        max-width:50px;
+        padding: 3px 10px;
+    }
+
+    .tooltip {
+        position: relative;
+      }
+      
+      .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 290px;
+        background-color: $corporateBlue;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        padding: 5px 0;
+      
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+        left: 60px;
+        top: 0px;
+      }
+      
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
+      }
+
+    .departure_board, .reference_link {
+        display:none;
+    }
+
+    @media (min-width:768px){
+        min-width:270px;
+        background: $corporateBlue;
+        padding: 20px;
+
+        .tooltip:hover .tooltiptext {
+            display: none;
+          }
+
+        .departure_board, .reference_link {
+            display:flex;
+        }
+
+        &_links {
+            a {
+                div {
+                    display:flex;
+                    align-items: center;
+                    margin-left: 5px;
+                }
+            }
+        }
+        .title, a {
+            display:flex;
+            align-items: center;
+            h1{
+                display:flex;
+            }
+        }
+    }
+
 }

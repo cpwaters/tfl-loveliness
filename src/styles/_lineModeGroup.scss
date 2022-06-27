@@ -22,10 +22,18 @@
         flex-wrap:wrap;
 
         a {
-            width:22%;
+            width:100%;
             font-size:22px;
-            background: rgba(0,25,168,1);
+            background:colors.$corporateDarkGrey;
             color:#fff;
+        }
+    }
+
+    @media (min-width:768px){
+        &_body {
+            a {
+                background:colors.$corporateBlue;
+            }
         }
     }
 }

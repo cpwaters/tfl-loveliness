@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Header from './components/header'
 import Navbar from './components/navbar'
 import Modes from './components/modes/modes'
 import Details from './components/details'
@@ -8,9 +9,11 @@ import Reference from './components/reference/reference'
 import Elizabeth from './components/elizabeth'
 import DepartureBoards from './components/departureBoard/departureBoards'
 import useFetch from './hooks/useFetch'
+import ScrollToTop from './hooks/useScrollToTop'
 import './styles/global.scss'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import MasterFile from './components/masterFile'
+
 
 
 const App = () => {
@@ -18,11 +21,13 @@ const App = () => {
   const { data, loading } = useFetch(`https://api.tfl.gov.uk/line/meta/modes`);
 
     useEffect(() => {
-    
+   
     },[]);
     
   return (
     <Router>
+      <ScrollToTop>
+      <Header />
       <div className="App">
         <Navbar modes={data}/>
         {loading ? <div className="loader"></div> : 
@@ -38,7 +43,8 @@ const App = () => {
           </Switch>
         </div>
       }
-      </div>  
+      </div> 
+      </ScrollToTop> 
     </Router>
   )
 }

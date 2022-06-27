@@ -5,26 +5,53 @@ const Navbar = ({ modes }) => {
     
     return ( 
         <nav className="navbar">
-            <a href="/"><h1>TfL-loveliness.com</h1></a>
+            <a href="/"><h1 className="title">TfL-loveliness.com</h1></a>
             <div className="navbar_links">
                 { modes && modes.map((mode) => 
                 {
+                    if( mode.modeName.includes('interchange-keep-sitting') || mode.modeName.includes('interchange-secure') ){
+                        return(null);
+                    }
                     if(mode.modeName.includes('-')){
-                        return (<Link key={mode.modeName} to={`/${mode.modeName}`}>{mode.modeName.replace('-', ' ')}</Link>)
+                        return (
+                            <Link className="tooltip" key={mode.modeName} to={`/${mode.modeName}`}>
+                                <img className="navbar_small_logo tooltip" src={window.location.origin + `/src/assets/${mode.modeName}.png`} alt={`${mode.modeName} corporate logo`} />
+                                <p className="tooltiptext">{mode.modeName.replace('-', ' ')}</p>
+                                <div>{mode.modeName.replace('-', ' ')}</div>
+                            </Link>
+                        )
                     }
                     if(mode.modeName.includes('dlr')){
-                        return (<Link key={mode.modeName} to={`/${mode.modeName}`}>{mode.modeName.replace('dlr', 'Docklands Light Railway (DLR)')}</Link>)
+                        return (
+                            <Link className="tooltip" key={mode.modeName} to={`/${mode.modeName}`}>
+                                <img className="navbar_small_logo" src={window.location.origin + `/src/assets/${mode.modeName}.png`} alt={`${mode.modeName} corporate logo`} />
+                                <p className="tooltiptext">{mode.modeName.replace('dlr', 'Docklands Light Railway (DLR)')}</p>
+                                <div>{mode.modeName.replace('dlr', 'Docklands Light Railway (DLR)')}</div>
+                            </Link>
+                        )
                     }
                     if(mode.modeName.includes('tflrail')){
-                        return (<Link key={mode.modeName} to={`/${mode.modeName}`}>{mode.modeName.replace('tflrail', 'TfL Rail')}</Link>)
-                    }else {
-                        return(<Link key={mode.modeName} to={`/${mode.modeName}`}>{mode.modeName}</Link>)
+                        return (
+                            <Link className="tooltip" key={mode.modeName} to={`/${mode.modeName}`}>
+                                <img className="navbar_small_logo" src={window.location.origin + `/src/assets/${mode.modeName}.png`} alt={`${mode.modeName} corporate logo`} />
+                                <p className="tooltiptext">{mode.modeName.replace('tflrail', 'TfL Rail')}</p>
+                                <div>{mode.modeName.replace('tflrail', 'TfL Rail')}</div>
+                            </Link>
+                        )
+                    } else {
+                        return(
+                            <Link className="tooltip" key={mode.modeName} to={`/${mode.modeName}`}>
+                                <img className="navbar_small_logo" src={window.location.origin + `/src/assets/${mode.modeName}.png`} alt={`${mode.modeName} corporate logo`} />
+                                <p className="tooltiptext">{mode.modeName}</p>
+                                <div>{mode.modeName}</div>
+                            </Link>
+                        )
                     }
+                    
                 }
                 )}
-                <Link to="/elizabeth">The Elizabeth Line &amp; Crossrail</Link>
-                <Link to="/departureBoards">Departure Board</Link>
-                <Link to="/reference">Reference</Link>
+                <Link className="departure_board" to="/departureBoards">Departure Board</Link>
+                <Link className="reference_link" to="/reference">Reference</Link>
             </div>
         </nav>
      );

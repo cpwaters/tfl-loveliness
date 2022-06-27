@@ -14,19 +14,27 @@
 
     &_header {
         display:flex;
-        flex-direction: row;
+        flex-direction: column-reverse;
         justify-content: space-between;
         border:1px solid #aaa;
         border-radius:5px;
         padding: 10px;
         margin-bottom:3%;
+        align-items: center;
+
+        &-subtitle {
+            margin-left:5px;
+            display:none;
+        }
         
         h2{
             align-self: center;
+            text-align: center;
         }
 
         p, img {
-            width:50%;
+            width:100%;
+            align-items: center;
         }
     }
 
@@ -38,9 +46,34 @@
     }
 
     .btn{
-        background: colors.$corporateBlue;
+        background: colors.$corporateDarkGrey;
         color: colors.$corporateWhite;
+        margin:0;
+
+        &:hover {
+            background: colors.$corporateGrey;
+        }
     }
 
     .bus {width:5%;}
+
+    @media (min-width:400px){
+        &_header {
+            flex-direction: row;
+
+            h2{
+                display:flex;
+                text-align: left;
+            }
+
+            img {width:50%;}
+        }
+    }
+    @media (min-width:768px){
+        &_header {
+            &-subtitle {
+                display:flex;
+            }
+        }
+    }
 }
