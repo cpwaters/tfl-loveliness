@@ -37,7 +37,7 @@ const Mode = ({ name }) => {
         <div className="mode">
             <div className="mode_header">
             {renderName()} 
-                <img className="details_header-right-two-logo" src={window.location.origin + `/src/assets/${name}.png`} alt={`${name} corporate logo`} />
+                <img className="details_header-right-two-logo" src={`/${name}.png`} alt={`${name} corporate logo`} />
             </div>
             {/* <p>mode</p> */}
             <div className="mode_body">
