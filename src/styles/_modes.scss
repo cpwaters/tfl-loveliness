@@ -1,8 +1,14 @@
 @use 'colors';
 
 .modes {
+
+    display:flex;
+    flex-direction:column;
+    max-width:100%;
+
     .btn{
-        background: colors.$corporateBlue;
+        max-width:100%;
+        background: colors.$corporateDarkGrey;
         color: colors.$corporateWhite;
     }
 }

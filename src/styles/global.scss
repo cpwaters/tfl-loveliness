@@ -1,5 +1,4 @@
 @import '_colors.scss';
-@import '_navbar.scss';
 @import '_map.scss';
 @import '_details.scss';
 @import '_stations.scss';
@@ -13,6 +12,37 @@
 @import '_route.scss';
 @import '_loader.scss';
 @import '_arrivalTime.scss';
+@import '_navbar.scss';
+
+$small: 400px;
+$medium: 768px;
+$large: 1024px;
+$xl: 1200px;
+
+/* resets */
+h2 {
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+.global_header {
+  display:flex;
+  flex-direction:column;
+  padding:20px;
+  align-items: center;
+  border-bottom:2px solid $corporateDarkGrey;
+  a {
+    text-align:center;
+    img{
+      max-width:70%;
+    } 
+  }
+}
 
 .App {
     display:flex;
@@ -38,10 +68,9 @@
   border-radius:3px;
   min-height:50px;
   border:1px solid #eee;
-  margin:5px;
+  margin:5px 0;
   display:inline-flex;
   max-width:100%;
-  width:22%;
   box-shadow:#ccc 0px 0px 8px 1px;
   text-decoration:none;
 }
@@ -60,4 +89,6 @@ small {
   color:#aaa;
   display:block;
 }
+
+
 

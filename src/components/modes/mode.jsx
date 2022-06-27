@@ -17,17 +17,19 @@ const Mode = ({ name }) => {
         <Link className={`btn ${name}`} key={i} to={`/${name}/${ind.id}`} >{ unhyphen(ind.id) }</Link>
     ));
 
+    const spanROTN = <span className="mode_header-subtitle">routes on the network</span>;
+
     const renderName = () => {
         if(name.includes('-')){
-            return ( <h2 style={{textTransform: 'capitalize'}} >{ name.replace('-', ' ') } routes on the network</h2> )
+        return ( <h2 style={{textTransform: 'capitalize'}} >{ name.replace('-', ' ') } {spanROTN}</h2> )
         }
         if(name.includes('dlr')){
-            return ( <h2 style={{textTransform: 'capitalize'}} >{ name.replace('dlr', 'Docklands Light Railway (DLR)') } routes on the network</h2> )
+            return ( <h2 style={{textTransform: 'capitalize'}} >{ name.replace('dlr', 'Docklands Light Railway (DLR)') } {spanROTN}</h2> )
         }
         if(name.includes('tflrail')){
-            return (<h2 style={{textTransform: 'capitalize'}} >{ name.replace('tflrail', 'TfL Rail') } routes on the network</h2> )
-        }else {
-            return(<h2 style={{textTransform: 'capitalize'}} >{ name } routes on the network</h2>)
+            return (<h2 style={{textTransform: 'capitalize'}} >{ name.replace('tflrail', 'TfL Rail') } {spanROTN}</h2> )
+        } else {
+            return(<h2 style={{textTransform: 'capitalize'}} >{ name } {spanROTN}</h2>)
         }
     }
     return(
@@ -37,12 +39,13 @@ const Mode = ({ name }) => {
             {renderName()} 
                 <img className="details_header-right-two-logo" src={window.location.origin + `/src/assets/${name}.png`} alt={`${name} corporate logo`} />
             </div>
-            <p>mode</p>
-            {name === 'bus' ? 
-            <BusFilter data={data} name={name}/> 
-            :  stdBtn }
-            {/* {loading ? <div className="loader"></div> : <Filter name={name} modeObjId={filter} />}  */}
-            
+            {/* <p>mode</p> */}
+            <div className="mode_body">
+                {name === 'bus' ? 
+                <BusFilter data={data} name={name}/> 
+                :  stdBtn }
+                {/* {loading ? <div className="loader"></div> : <Filter name={name} modeObjId={filter} />}  */}
+            </div>
         </div>
         );
 }

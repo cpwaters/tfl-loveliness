@@ -12,6 +12,8 @@ const Details = ({ match }) => {
 
   console.log();
 
+  const win = window.innerWidth;
+
   useEffect(() => {
 
   }, []);
@@ -21,10 +23,10 @@ const Details = ({ match }) => {
       <div className="details">
         <div className="details_header">
           <div className="details_header-left">
-            <h2>Page Name: details.jsx</h2>
-            <h2>{data && data[0].name} line details</h2>
-            <p>Line name: {data && data[0].name}</p>  
-            <p>Mode of transit: {data && data[0].modeName}</p>   
+            {/* <h2>Page Name: details.jsx</h2> */}
+            <h2>{data && data[0].name}</h2>
+            {/* <p>Line name: {data && data[0].name}</p>   */}
+            {/* <p>Mode of transit: {data && data[0].modeName}</p>    */}
           </div> 
           {match.path.includes('/bus/') ? 
           <div className="details_header-right-one">
@@ -36,7 +38,7 @@ const Details = ({ match }) => {
           }
         </div>
         {/* <RouteMap routeNumber={routeNumber}/> */}
-        <Route routeNumber={routeNumber} />
+        {win >= 768 ? <Route routeNumber={routeNumber} /> : null }
         <Stops mode={data[0].modeName} detail={data} amatch={match.params.id} /> 
         {/* <Stations detail={detail} amatch={match.params.id} />   */}
             

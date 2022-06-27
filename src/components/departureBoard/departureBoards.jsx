@@ -64,7 +64,7 @@ const DepartureBoard = ({ destinations }) => {
       //   destNames.push(data);
       // })
 
-      console.log(destinations)
+      //console.log(destinations)
 
       //const {data, loading} = useFetch(`https://api.tfl.gov.uk/stoppoint/${ds}`)
 

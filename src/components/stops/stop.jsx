@@ -27,7 +27,8 @@ const Stop = ({ match }) => {
   return(
     loading ? <div className="loader"></div> :
       <div className="stops"> 
-            <h2>{ data.commonName } - {data.stopType && data.stopType.replace(/([a-z])([A-Z])/g, '$1 $2') }</h2> 
+        {console.log(data)}
+            <h2>{ data.commonName }{/*  - {data.stopType && data.stopType.replace(/([a-z])([A-Z])/g, '$1 $2') }*/}</h2>  
             <MapEmbed lat={data.lat} lon={data.lon} />
 
             {/* <Arrivals platformMode={platformMode} stopName={stopName} stopCode={stopCode}/> */}
@@ -45,7 +46,7 @@ const Stop = ({ match }) => {
                 ))   
             }
 
-            <ArrivalTime stopCode={stopCode}/>
+            {/* <ArrivalTime stopCode={stopCode}/> */}
 
             <div className="stn-info-ftr">
                 <p>Id: { data.id }</p> 

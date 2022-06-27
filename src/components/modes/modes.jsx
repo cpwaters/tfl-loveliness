@@ -19,7 +19,6 @@ const Modes = () => {
 
 return(
     <div className="modes">
-    <h2>Modes of transport around the network</h2>
     { modes && modes.map((mode) =>  
       {
         if(mode.modeName.includes('-')){
