@@ -15,7 +15,7 @@ const Navbar = ({ modes }) => {
                     if(mode.modeName.includes('-')){
                         return (
                             <Link className="tooltip" key={mode.modeName} to={`/${mode.modeName}`}>
-                                <img className="navbar_small_logo tooltip" src={window.location.origin + `/src/assets/${mode.modeName}.png`} alt={`${mode.modeName} corporate logo`} />
+                                <img className="navbar_small_logo tooltip" src={`/${mode.modeName}.png`} alt={`${mode.modeName} corporate logo`} />
                                 <p className="tooltiptext">{mode.modeName.replace('-', ' ')}</p>
                                 <div>{mode.modeName.replace('-', ' ')}</div>
                             </Link>
@@ -24,7 +24,7 @@ const Navbar = ({ modes }) => {
                     if(mode.modeName.includes('dlr')){
                         return (
                             <Link className="tooltip" key={mode.modeName} to={`/${mode.modeName}`}>
-                                <img className="navbar_small_logo" src={window.location.origin + `/src/assets/${mode.modeName}.png`} alt={`${mode.modeName} corporate logo`} />
+                                <img className="navbar_small_logo" src={`/${mode.modeName}.png`} alt={`${mode.modeName} corporate logo`} />
                                 <p className="tooltiptext">{mode.modeName.replace('dlr', 'Docklands Light Railway (DLR)')}</p>
                                 <div>{mode.modeName.replace('dlr', 'Docklands Light Railway (DLR)')}</div>
                             </Link>
@@ -33,7 +33,7 @@ const Navbar = ({ modes }) => {
                     if(mode.modeName.includes('tflrail')){
                         return (
                             <Link className="tooltip" key={mode.modeName} to={`/${mode.modeName}`}>
-                                <img className="navbar_small_logo" src={window.location.origin + `/src/assets/${mode.modeName}.png`} alt={`${mode.modeName} corporate logo`} />
+                                <img className="navbar_small_logo" src={`/${mode.modeName}.png`} alt={`${mode.modeName} corporate logo`} />
                                 <p className="tooltiptext">{mode.modeName.replace('tflrail', 'TfL Rail')}</p>
                                 <div>{mode.modeName.replace('tflrail', 'TfL Rail')}</div>
                             </Link>
@@ -41,7 +41,7 @@ const Navbar = ({ modes }) => {
                     } else {
                         return(
                             <Link className="tooltip" key={mode.modeName} to={`/${mode.modeName}`}>
-                                <img className="navbar_small_logo" src={window.location.origin + `/src/assets/${mode.modeName}.png`} alt={`${mode.modeName} corporate logo`} />
+                                <img className="navbar_small_logo" src={`/${mode.modeName}.png`} alt={`${mode.modeName} corporate logo`} />
                                 <p className="tooltiptext">{mode.modeName}</p>
                                 <div>{mode.modeName}</div>
                             </Link>
