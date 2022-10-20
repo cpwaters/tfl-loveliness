@@ -33,7 +33,7 @@ const Details = ({ match }) => {
             <h1>{data[0].name}</h1>
           </div> :
           <div className="details_header-right-two">
-            <img className="details_header-right-two-logo" src={window.location.origin + `/src/assets/${data[0].id}.png`} alt={`${data[0].name} corporate logo`} />
+            <img className="details_header-right-two-logo" src={`/${data[0].id}.png`} alt={`${data[0].name} corporate logo`} />
           </div>
           }
         </div>

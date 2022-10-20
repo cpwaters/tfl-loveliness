@@ -5,6 +5,9 @@ import { Switch } from 'react-router-dom';
 
 const Stations = ({ amatch }) => {
 
+  // TODO's
+    // This isn't being used!
+
     const line = amatch;
     const [direction, setDirection] = useState('all');
     const [stops, setStops] = useState({
@@ -35,8 +38,8 @@ const Stations = ({ amatch }) => {
           <button onClick={() => handleDirection('outbound')} >Outbound</button> 
           <button onClick={() => handleDirection('all')} >All</button>
         </div>
-            { stops.stations.map(item => 
-              <div key={Math.random()} className="stations-card">
+            { stops.stations.map((item,i) => 
+              <div key={i} className="stations-card">
                   <p>{item.name.replace('Underground Station', '')}</p>
               </div>
             )}

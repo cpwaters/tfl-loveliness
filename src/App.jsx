@@ -14,8 +14,6 @@ import './styles/global.scss'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import MasterFile from './components/masterFile'
 
-
-
 const App = () => {
 
   const { data, loading } = useFetch(`https://api.tfl.gov.uk/line/meta/modes`);
@@ -33,7 +31,10 @@ const App = () => {
         {loading ? <div className="loader"></div> : 
         <div className="App-inner">
           <Switch>
-            <Route exact path="/"><Modes /><MasterFile /></Route>
+            <Route exact path="/">
+              <Modes />
+              <MasterFile />
+              </Route>
             { data && data.map((mode) => (<Route key={mode.modeName} exact path={`/${mode.modeName}`}><Mode name={mode.modeName} /></Route>) )}
             { data && data.map((mode) => (<Route key={mode.modeName+'id'} exact path={`/${mode.modeName}/:id`} component={Details} />) )}
             { data && data.map((mode) => (<Route key={Math.random()} exact path={`/${mode.modeName}/:id/:stop`} component={Stop} />) )}

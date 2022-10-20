@@ -11,6 +11,9 @@ import useFetch from '../../hooks/useFetch'
 
 const Stop = ({ match }) => {
 
+  // TODO's 
+    // Take out same line "Change here for..."
+
   const platformMode = match.path
   const stopName = match.params.id
   const stopCode = match.params.stop;
@@ -41,9 +44,9 @@ const Stop = ({ match }) => {
             {/* <Timetable stopName={stopName} stopCode={stopCode} /> */}
 
             <h3>Other services from this stop : </h3>
-            {data && data.lineModeGroups.map(lmg => (
-                <LineModeGroups lat={data.lat} lon={data.lon} key={Math.random()} lmg={lmg} />
-                ))   
+            {data && data.lineModeGroups.map((lmg,i) => (
+                <LineModeGroups lat={data.lat} lon={data.lon} key={i} lmg={lmg} />
+            ))   
             }
 
             {/* <ArrivalTime stopCode={stopCode}/> */}
